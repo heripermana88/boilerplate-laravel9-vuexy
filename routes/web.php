@@ -143,7 +143,7 @@ Route::controller(ExtensionController::class)->prefix('ext-component')->group(fu
     Route::get('swiper', 'swiper')->name('ext-component-swiper');
     Route::get('tree', 'tree')->name('ext-component-tree');
     Route::get('ratings', 'ratings')->name('ext-component-ratings');
-    Route::get('locale', 'locales')->name('ext-component-locale');
+    Route::get('locale', 'locale')->name('ext-component-locale');
 });
 // /* Route Extensions */
 

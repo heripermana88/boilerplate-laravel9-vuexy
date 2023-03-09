@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $productRepository;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    function __construct(ProductRepositoryInterface $productRepository)
     {
         $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
         $this->middleware('permission:product-create', ['only' => ['create','store']]);
         $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+        $this->productRepository = $productRepository;
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +29,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = $this->productRepository->allProducts();
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -54,10 +57,11 @@ class ProductController extends Controller
             'detail' => 'required',
         ]);
 
-        Product::create($request->all());
+        $this->productRepository->storeProduct($request->all());
 
-        return redirect()->route('products.index')
-                        ->with('success','Product created successfully.');
+        return redirect()
+        ->route('products.index')
+        ->with('success','Product created successfully.');
     }
 
     /**

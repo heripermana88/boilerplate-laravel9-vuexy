@@ -24,23 +24,23 @@ class Helper
 
         // default data array
         $DefaultData = [
-          'mainLayoutType' => 'vertical',
-          'theme' => 'light',
-          'sidebarCollapsed' => false,
-          'navbarColor' => '',
-          'horizontalMenuType' => 'floating',
-          'verticalMenuNavbarType' => 'floating',
-          'footerType' => 'static', //footer
-          'layoutWidth' => 'full',
-          'showMenu' => true,
-          'bodyClass' => '',
-          'bodyStyle' => '',
-          'pageClass' => '',
-          'pageHeader' => true,
-          'contentLayout' => 'default',
-          'blankPage' => false,
-          'defaultLanguage'=>'en',
-          'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'),
+            'mainLayoutType' => 'vertical',
+            'theme' => 'light',
+            'sidebarCollapsed' => false,
+            'navbarColor' => '',
+            'horizontalMenuType' => 'floating',
+            'verticalMenuNavbarType' => 'floating',
+            'footerType' => 'static', //footer
+            'layoutWidth' => 'full',
+            'showMenu' => true,
+            'bodyClass' => '',
+            'bodyStyle' => '',
+            'pageClass' => '',
+            'pageHeader' => true,
+            'contentLayout' => 'default',
+            'blankPage' => false,
+            'defaultLanguage'=>'en',
+            'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'),
         ];
 
         // if any key missing of array from custom.php file it will be merge and set a default value from dataDefault array and store in data variable

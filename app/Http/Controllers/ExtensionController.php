@@ -139,7 +139,7 @@ class ExtensionController extends Controller
   }
 
   // I18n
-  public function locale()
+  public function setlanguage()
   {
     $breadcrumbs = [
       ['link' => "/", 'name' => "Home"], ['link' => "javascript:void(0)", 'name' => "Extensions"], ['name' => "Locale"]
